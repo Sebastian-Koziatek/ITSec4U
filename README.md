@@ -1,21 +1,21 @@
 # 🛡️ ITSec4You: Systemy operacyjne kontra Kontenery 🚀
 
-Projekt koncentruje się na analizie porównawczej tradycyjnych **systemów operacyjnych** i technologii konteneryzacji, takich jak **Docker** i **LXC**. Prezentacja omawia kluczowe różnice, zalety oraz wady obu podejść, ze szczególnym naciskiem na ich wpływ na bezpieczeństwo środowisk IT. 🔐
+Prezentacja koncentruje się na analizie porównawczej tradycyjnych **systemów operacyjnych**, wirtualizacji oraz technologii konteneryzacji, takich jak **Docker** i **LXC**. Prezentacja omawia kluczowe różnice, zalety oraz wady obu podejść, ze szczególnym naciskiem na aspekt systemu operacyjnego w tych rozwiązaniach. 🔐
 
 ## 🌟 Opis Prezentacji
-Podczas sesji zostaną omówione:
-- **Podstawowe różnice technologiczne** między systemami operacyjnymi a kontenerami 🖥️🆚🐳
+Podczas prezentacji zostaną omówione:
+- **Podstawowe różnice technologiczne** między systemami operacyjnymi w maszynach wirtualnych i kontenerach 🖥️🆚🐳
 - **Architektura wirtualizacji i konteneryzacji** 🔧
 - Szczegółowa analiza **zalet i wad** obu technologii w kontekście **wydajności, skalowalności oraz bezpieczeństwa** 📊
 - **Zagadnienia związane z bezpieczeństwem** w obu podejściach 🔒
 
-## 🎯 Cele Prelekcji
+## 🎯 Cele Prezentacji
 
 Główne cele tej prezentacji to:
-1. **Przedstawienie podstawowych różnic** między systemami operacyjnymi a kontenerami.
+1. **Przedstawienie podstawowych różnic** między systemami operacyjnymi w kontenerach i maszynach wirtualnych.
 2. **Omówienie architektury** wirtualizacji i konteneryzacji.
 3. **Analiza zalet i wad** pod kątem wydajności, skalowalności oraz bezpieczeństwa.
-4. **Poruszenie kwestii bezpieczeństwa** w środowiskach systemowych i kontenerowych.
+4. **Poruszenie kwestii bezpieczeństwa** w środowiskach zwirtualizowanych i kontenerowych.
 
 ## 🛠️ Kluczowe Tematy
 - **Różnice technologiczne**: Jak tradycyjne systemy operacyjne różnią się od konteneryzowanych środowisk pod względem struktury i funkcjonalności.
