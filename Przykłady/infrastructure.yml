@@ -1,0 +1,104 @@
+services:
+  pihole:
+    image: pihole/pihole
+    container_name: pihole
+    environment:
+      - DNS1=1.1.1.1
+      - DNS2=1.0.0.1
+      - WEBPASSWORD=yourpassword
+      - PIHOLE_DOMAIN=yourdomain.local
+    volumes:
+      - pihole_data:/etc/pihole
+      - dnsmasq_data:/etc/dnsmasq.d
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8080:80"   # Port HTTP do Pi-hole
+
+  nginx_proxy_manager:
+    image: jc21/nginx-proxy-manager
+    container_name: nginx_proxy_manager
+    environment:
+      - DB_SQLITE_FILE=/data/database.sqlite
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    ports:
+      - "81:81"     # Panel administracyjny Nginx Proxy Manager
+      - "8081:80"   # Port HTTP dla Nginx Proxy Manager
+      - "8443:443"  # Port HTTPS dla Nginx Proxy Manager
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # Port do Portainer
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    volumes:
+      - filebrowser_data:/srv
+      - ./filebrowser.json:/config.json
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    ports:
+      - "8082:80"   # Port HTTP dla Filebrowser
+
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    volumes:
+      - nextcloud_data:/var/www/html
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    ports:
+      - "8083:80"   # Port HTTP dla Nextcloud
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    networks:
+      - homelab_network
+    restart: unless-stopped
+    ports:
+      - "8086:8086"  # Port do InfluxDB
+
+networks:
+  homelab_network:
+    driver: bridge
+
+volumes:
+  pihole_data:
+  dnsmasq_data:
+  npm_data:
+  npm_letsencrypt:
+  portainer_data:
+  filebrowser_data:
+  nextcloud_data:
+  influxdb_data:

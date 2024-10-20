@@ -21,7 +21,7 @@ services:
     networks:
       ItSec4You:
         ipv4_address: 192.168.100.203
-    command: bash -c "dnf install -y openssh-server iproute iputils && /usr/sbin/sshd && tail -f /dev/null"
+    command: bash -c "dnf install -y openssh-server iproute iputils && /usr/sbin/sshd -D && tail -f /dev/null"
 
   alpine:
     image: alpine:latest
@@ -29,7 +29,7 @@ services:
     networks:
       ItSec4You:
         ipv4_address: 192.168.100.204
-    command: sh -c "apk update && apk add openssh iproute2 iputils && /usr/sbin/sshd && tail -f /dev/null"
+    command: sh -c "apk update && apk add openssh iproute2 iputils && ssh-keygen -A && /usr/sbin/sshd -D && tail -f /dev/null"
 
 networks:
   ItSec4You:
